@@ -5,6 +5,7 @@
 # Newer versions of these libraries are available and may work better on OS X
 #
 # This script is originally from http://jsdelfino.blogspot.com.au/2012/08/autoconf-and-automake-on-mac-os-x.html
+# This script has been adapted from https://gist.github.com/jellybeansoup/4192307
 #
 
 BUILD_DIR=`pwd`
