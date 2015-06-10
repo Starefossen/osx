@@ -15,6 +15,7 @@ AUTOCONF_VERSION=2.69
 AUTOMAKE_VERSION=1.15
 LIBTOOL_VERSION=2.4.6
 LIBEVENT_VERSION=2.0.22-stable
+CMAKE_VERSION=3.2.3
 TMUX_VERSION=2.0
 
 ##
@@ -64,6 +65,15 @@ cd libevent-${LIBEVENT_VERSION}
 ./configure --prefix=${BUILD_PREFIX}
 make
 sudo make install
+
+###
+## CMake
+## http://www.cmake.org
+
+cd ${BUILD_DIR}
+curl -OL http://www.cmake.org/files/v3.2/cmake-${CMAKE_VERSION}-Darwin-x86_64.tar.gz
+tar xcf cmake-${CMAKE_VERSION}-Darwin-x86_64
+sudo mv cmake-${CMAKE_VERSION}-Darwin-x86_64/CMake.app/Contents/bin/cmake /usr/local/bin/cmake
 
 ###
 ## Tmux
