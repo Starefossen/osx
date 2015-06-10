@@ -17,6 +17,7 @@ LIBTOOL_VERSION=2.4.6
 LIBEVENT_VERSION=2.0.22-stable
 CMAKE_VERSION=3.2.3
 TMUX_VERSION=2.0
+TMUX_MCL_VERSION=3.2.2
 
 ##
 # Autoconf
@@ -85,6 +86,18 @@ tar xzf tmux-${TMUX_VERSION}.tar.gz
 cd tmux-${TMUX_VERSION}
 sh autogen.sh
 ./configure --prefix=${BUILD_PREFIX}
+make
+sudo make install
+
+###
+## tmux-mem-cpu-load
+## https://github.com/thewtex/tmux-mem-cpu-load
+
+cd $BUILD_DIR
+curl -OL https://github.com/thewtex/tmux-mem-cpu-load/archive/v${TMUX_MCL_VERSION}.tar.gz
+tar xzf v${TMUX_MCL_VERSION}.tar.gz
+cd tmux-mem-cpu-load-${TMUX_MCL_VERSION}
+cmake .
 make
 sudo make install
 
