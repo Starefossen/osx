@@ -16,7 +16,7 @@ AUTOMAKE_VERSION=1.15
 LIBTOOL_VERSION=2.4.6
 LIBEVENT_VERSION=2.0.22-stable
 CMAKE_VERSION=3.2.3
-TMUX_VERSION=2.0
+TMUX_VERSION=2.1
 TMUX_MCL_VERSION=3.2.2
 
 ##
@@ -84,7 +84,6 @@ cd $BUILD_DIR
 curl -OL https://github.com/tmux/tmux/releases/download/${TMUX_VERSION}/tmux-${TMUX_VERSION}.tar.gz
 tar xzf tmux-${TMUX_VERSION}.tar.gz
 cd tmux-${TMUX_VERSION}
-sh autogen.sh
 ./configure --prefix=${BUILD_PREFIX}
 make
 sudo make install
