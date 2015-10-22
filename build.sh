@@ -100,4 +100,16 @@ cmake .
 make
 sudo make install
 
+###
+## socat
+##
+
+cd ${BUILD_DIR}
+curl -OL "http://www.dest-unreach.org/socat/download/socat-${SOCAT_VERSION}.tar.gz"
+tar xzf "socat-.tar.gz"
+cd "socat-${SOCAT_VERSION}"
+./configure --prefix=${BUILD_PREFIX}
+make
+sudo make install
+
 echo "Installation complete."
