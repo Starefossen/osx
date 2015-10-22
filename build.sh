@@ -15,7 +15,7 @@ AUTOCONF_VERSION=2.69
 AUTOMAKE_VERSION=1.15
 LIBTOOL_VERSION=2.4.6
 LIBEVENT_VERSION=2.0.22-stable
-CMAKE_VERSION=3.2.3
+CMAKE_VERSION=3.3.2
 TMUX_VERSION=2.1
 TMUX_MCL_VERSION=3.2.2
 
@@ -69,11 +69,11 @@ sudo make install
 
 ###
 ## CMake
-## http://www.cmake.org
+## https://cmake.org/download/
 
 cd ${BUILD_DIR}
-curl -OL http://www.cmake.org/files/v3.2/cmake-${CMAKE_VERSION}-Darwin-x86_64.tar.gz
-tar xcf cmake-${CMAKE_VERSION}-Darwin-x86_64
+curl -OL https://cmake.org/files/v3.3/cmake-${CMAKE_VERSION}-Darwin-x86_64.tar.gz
+tar xzf cmake-${CMAKE_VERSION}-Darwin-x86_64
 sudo mv cmake-${CMAKE_VERSION}-Darwin-x86_64/CMake.app/Contents/bin/cmake /usr/local/bin/cmake
 
 ###
