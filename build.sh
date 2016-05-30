@@ -18,6 +18,7 @@ LIBEVENT_VERSION=2.0.22-stable
 CMAKE_VERSION=3.3.2
 TMUX_VERSION=2.1
 TMUX_MCL_VERSION=3.2.3
+LIBDVDCSS_VERSION=1.4.0
 
 ##
 # Autoconf
@@ -111,5 +112,17 @@ cd "socat-${SOCAT_VERSION}"
 ./configure --prefix=${BUILD_PREFIX}
 make
 sudo make install
+
+###
+## libdvdcss
+##
+
+cd ${BUILD_PREFIX}
+curl -vOL "http://download.videolan.org/pub/libdvdcss/${LIBDVDCSS_VERSION}/libdvdcss-${LIBDVDCSS_VERSION}.tar.bz2"
+#tar xzf "libdvdcss-${LIBDVDCSS_VERSION}.tar.bz2"
+#cd "libdvdcss-${LIBDVDCSS_VERSION}"
+#./configure --prefix=${BUILD_PREFIX}
+#make
+#sudo make install
 
 echo "Installation complete."
