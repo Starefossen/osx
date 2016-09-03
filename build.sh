@@ -330,6 +330,8 @@ then
 
   ./install \
     || exit 1
+
+  mv shell/key-bindings.fish ~/.config/fish/functions/fzf_key_bindings.fish
 else
   echo "fzf@${FZF_VERSION} is already installed!"
   sleep 2
