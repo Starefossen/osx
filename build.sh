@@ -34,7 +34,8 @@ TMUX_VERSION=2.3
 # pkg-config
 # https://www.freedesktop.org/wiki/Software/pkg-config/
 
-if [ "$(pkg-config --version)" != "${PKG_CONFIG_VERSION}" ]
+PKG_CONFIG_INSTALLED=$(pkg-config --version)
+if [ "${PKG_CONFIG_INSTALLED}" != "${PKG_CONFIG_VERSION}" ]
 then
   cd $BUILD_DIR
   curl -vOL https://pkg-config.freedesktop.org/releases/pkg-config-${PKG_CONFIG_VERSION}.tar.gz
@@ -128,7 +129,6 @@ fi
 ## OpenSSL
 ## https://wiki.openssl.org/index.php/Compilation_and_Installation#Mac
 
-OPENSSL_VERSION="1.0.2h"
 OPENSSL_VERSION_INSTALLED=$(openssl version | head -n 1 | awk '{ print $2 }')
 if [ "${OPENSSL_VERSION_INSTALLED}" != "${OPENSSL_VERSION}" ]
 then
@@ -160,16 +160,23 @@ fi
 ## Libvent
 ## https://github.com/libevent/libevent/releases
 
-cd $BUILD_DIR
-curl -vOL https://github.com/libevent/libevent/archive/release-${LIBEVENT_VERSION}.tar.gz
-tar xzf release-${LIBEVENT_VERSION}.tar.gz
-cd libevent-release-${LIBEVENT_VERSION}
+LIBEVENT_VERSION_INSTALLED=${LIBEVENT_VERSION} # @TODO FIX ME
+if [ "${LIBEVENT_VERSION}" != "${LIBEVENT_VERSION}" ]
+then
+  cd $BUILD_DIR
+  curl -vOL https://github.com/libevent/libevent/archive/release-${LIBEVENT_VERSION}.tar.gz
+  tar xzf release-${LIBEVENT_VERSION}.tar.gz
+  cd libevent-release-${LIBEVENT_VERSION}
 
-./autogen.sh && \
-./configure --prefix=${BUILD_PREFIX} \
-  && make \
-  && sudo make install \
-  || exit 1
+  ./autogen.sh && \
+  ./configure --prefix=${BUILD_PREFIX} \
+    && make \
+    && sudo make install \
+    || exit 1
+else
+  echo "libevent@${LIBEVENT_VERSION} is already installed!"
+
+fi
 
 ###
 ## CMake
@@ -207,15 +214,15 @@ then
     || exit 1
 else
   echo "tmux@${TMUX_VERSION} is already installed!"
-  sleep 2
+
 fi
 
 ###
 ## tmux-mem-cpu-load
 ## https://github.com/thewtex/tmux-mem-cpu-load/releases
 
-TMUX_MCL_VERSION_INSTALLED=$(tmux -V | head -n 1 | awk '{ print $2 }')
-if [ "${TMUX_MCL_VERSION_INSTALLED}" != "${TMUX_MCL_VERSION}" ]
+TMUX_MCL_VERSION_INSTALLED=$(tmux-mem-cpu-load --help | head -n 1 | awk '{ print $2 }')
+if [ "${TMUX_MCL_VERSION_INSTALLED}" != "v${TMUX_MCL_VERSION}" ]
 then
   cd $BUILD_DIR
   curl -vOL https://github.com/thewtex/tmux-mem-cpu-load/archive/v${TMUX_MCL_VERSION}.tar.gz
@@ -235,22 +242,26 @@ fi
 ## libffi
 ## http://linuxfromscratch.org/blfs/view/svn/general/libffi.html
 
-LIBFFI_VERSION=3.2.1
-curl -vOL ftp://sourceware.org/pub/libffi/libffi-${LIBFFI_VERSION}.tar.gz
-tar xzf libffi-${LIBFFI_VERSION}.tar.gz
-cd libffi-${LIBFFI_VERSION}/
+if [[ ! -d "/usr/local/lib/libffi-${LIBFFI_VERSION}" ]]
+then
+  curl -vOL ftp://sourceware.org/pub/libffi/libffi-${LIBFFI_VERSION}.tar.gz
+  tar xzf libffi-${LIBFFI_VERSION}.tar.gz
+  cd libffi-${LIBFFI_VERSION}/
 
-./configure --prefix=/usr/local --disable-static \
-  && make \
-  && sudo make install \
-  || exit 1
+  ./configure --prefix=/usr/local --disable-static \
+    && make \
+    && sudo make install \
+    || exit 1
+else
+  echo "libffi@${LIBFFI_VERSION} is already installed!"
+
+fi
 
 ###
 ## gettext
 ## http://www.gnu.org/software/gettext/gettext.html
 
-GETTEXT_VERSION=0.19.8.1
-GETTEXT_VERSION_INSTALLED=$(libtool --version | head -n 1 | awk '{ print $NF }')
+GETTEXT_VERSION_INSTALLED=$(gettext --version | head -n 1 | awk '{ print $NF }')
 if [ "${GETTEXT_VERSION_INSTALLED}" != "${GETTEXT_VERSION}" ]
 then
   curl -vOL http://ftp.gnu.org/pub/gnu/gettext/gettext-${GETTEXT_VERSION}.tar.xz
@@ -272,11 +283,11 @@ fi
 ## pcre
 ## http://pcre.org/
 
-PCRE_VERSION=8.39
 PCRE_VERSION_INSTALLED=$(pcre-config --version | head -n 1 | awk '{ print $NF }')
 if [ "${PCRE_VERSION_INSTALLED}" != "${PCRE_VERSION}" ]
 then
   curl -vOL ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${PCRE_VERSION}.tar.gz
+  tar xzf pcre-${PCRE_VERSION}.tar.gz
   cd pcre-${PCRE_VERSION}/
 
   ./configure --prefix=/usr/local --enable-unicode-properties \
@@ -294,28 +305,32 @@ fi
 ## glib
 ## http://ftp.gnome.org/pub/GNOME/sources/glib/
 
-GLIB_VERSION=2.49.1
-GLIB_VERSION_MAJOR=2.49
-curl -vOL http://ftp.gnome.org/pub/GNOME/sources/glib/2.49/glib-2.49.1.tar.xz
-tar xzf glib-2.49.1.tar.xz
-cd glib-2.49.1/
+GLIB_VERSION_INSTALLED=${GLIB_VERSION} # @TODO FIX-ME
+if [ "${GLIB_VERSION}" != "${GLIB_VERSION}" ]
+then
+  curl -vOL http://ftp.gnome.org/pub/GNOME/sources/glib/${GLIB_VERSION_MAJOR}/glib-${GLIB_VERSION}.tar.xz
+  tar xzf glib-2.49.1.tar.xz
+  cd glib-2.49.1/
 
-./configure --prefix=/usr/local \
-  && make \
-  && sudo make install \
-  || exit 1
+  ./configure --prefix=/usr/local \
+    && make \
+    && sudo make install \
+    || exit 1
+else
+  echo "glib@${GLIB_VERSION} is already installed!"
+
+fi
 
 ###
 ## neovim
 ## https://github.com/neovim/neovim/wiki/Building-Neovim#optimized-builds
 
-NEOVIM_VERSION=0.1.6-dev
 NEOVIM_VERSION_INSTALLED=$(nvim --version | head -n 1 | awk '{ print $NF }')
 if [ "${NEOVIM_VERSION_INSTALLED}" != "${NEOVIM_VERSION}" ]
 then
-  curl -vOL https://github.com/neovim/neovim/archive/master.tar.gz
-  tar xzf master.tar.gz
-  cd neovim-master
+  curl -vOL https://github.com/neovim/neovim/archive/v${NEOVIM_VERSION}.tar.gz
+  tar xzf v${NEOVIM_VERSION}.tar.gz
+  cd neovim-${NEOVIM_VERSION}
 
   make CMAKE_BUILD_TYPE=Release \
     && sudo make install \
