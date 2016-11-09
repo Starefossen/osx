@@ -49,7 +49,7 @@ then
   pkg-config --version
 else
   echo "pkg-config@${PKG_CONFIG_VERSION} is already installed!"
-  sleep 2
+
 fi
 
 ##
@@ -72,7 +72,7 @@ then
   autoconf --version
 else
   echo "autoconf@${AUTOCONF_VERSION} is already installed!"
-  sleep 2
+
 fi
 
 ##
@@ -95,7 +95,7 @@ then
   automake --version
 else
   echo "automake@${AUTOMAKE_VERSION} is already installed!"
-  sleep 2
+
 fi
 
 ###
@@ -121,7 +121,7 @@ then
   libtool --version
 else
   echo "libtool@${LIBTOOL_VERSION} is already installed!"
-  sleep 2
+
 fi
 
 ###
@@ -153,7 +153,7 @@ then
   openssl version
 else
   echo "openssl@${OPENSSL_VERSION} is already installed!"
-  sleep 2
+
 fi
 
 ###
@@ -186,7 +186,7 @@ then
   sudo mv share/cmake-${CMAKE_VERSION_MAJOR} /usr/local/share/
 else
   echo "cmake@${CMAKE_VERSION} is already installed!"
-  sleep 2
+
 fi
 
 ###
@@ -228,7 +228,7 @@ then
     || exit 1
 else
   echo "tmux-mem-cpu-load@${TMUX_MCL_VERSION} is already installed!"
-  sleep 2
+
 fi
 
 ###
@@ -265,7 +265,7 @@ then
   gettext --version
 else
   echo "gettext@${GETTEXT_VERSION} is already installed!"
-  sleep 2
+
 fi
 
 ###
@@ -287,7 +287,7 @@ then
   pcre-config --version
 else
   echo "pcre-config@${PCRE_VERSION} is already installed!"
-  sleep 2
+
 fi
 
 ###
@@ -322,7 +322,7 @@ then
     || exit 1
 else
   echo "neovim@${NEOVIM_VERSION} is already installed!"
-  sleep 2
+
 fi
 
 ###
