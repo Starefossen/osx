@@ -342,21 +342,42 @@ fi
 
 ###
 ## fzf
-##
+## https://github.com/junegunn/fzf
 
-FZF_VERSION=0.13.5
 FZF_VERSION_INSTALLED=$(fzf --version)
 if [ "${FZF_VERSION_INSTALLED}" != "${FZF_VERSION}" ]
 then
-  curl -vOL https://github.com/junegunn/fzf/archive/master.tar.gz
-  tar xzf master.tar.gz
-  cd fzf-master
+  curl -vOL https://github.com/junegunn/fzf/archive/${FZF_VERSION}.tar.gz
+  tar xzf ${FZF_VERSION}.tar.gz
+  cd fzf-${FZF_VERSION}
 
   ./install \
     || exit 1
 
   mv shell/key-bindings.fish ~/.config/fish/functions/fzf_key_bindings.fish
+
+  sudo mv bin/fzf-${FZF_VERSION}-darwin_amd64 /usr/local/bin/fzf
+  sudo mv bin/fzf-tmux /usr/local/bin
 else
   echo "fzf@${FZF_VERSION} is already installed!"
-  sleep 2
+
+fi
+
+
+###
+## pastboard
+## https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
+
+PASTEBOARD_VERSION_INSTALLED=$(reattach-to-user-namespace --version | head -n 1 | awk '{ print $NF }')
+if [ "${PASTEBOARD_VERSION_INSTALLED}" != ${PASTEBOARD_VERSION} ]
+then
+  curl -vOL "https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/archive/v${PASTEBOARD_VERSION}.tar.gz"
+  tar xzf "v${PASTEBOARD_VERSION}.tar.gz"
+  cd "tmux-MacOSX-pasteboard-${PASTEBOARD_VERSION}"
+
+  make || exit 1
+  sudo cp reattach-to-user-namespace /usr/local/bin
+else
+  echo "pasteboard@${PASTEBOARD_VERSION} is already installed!"
+
 fi
