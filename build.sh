@@ -244,6 +244,7 @@ fi
 
 if [[ ! -d "/usr/local/lib/libffi-${LIBFFI_VERSION}" ]]
 then
+  cd $BUILD_DIR
   curl -vOL ftp://sourceware.org/pub/libffi/libffi-${LIBFFI_VERSION}.tar.gz
   tar xzf libffi-${LIBFFI_VERSION}.tar.gz
   cd libffi-${LIBFFI_VERSION}/
@@ -264,6 +265,7 @@ fi
 GETTEXT_VERSION_INSTALLED=$(gettext --version | head -n 1 | awk '{ print $NF }')
 if [ "${GETTEXT_VERSION_INSTALLED}" != "${GETTEXT_VERSION}" ]
 then
+  cd $BUILD_DIR
   curl -vOL http://ftp.gnu.org/pub/gnu/gettext/gettext-${GETTEXT_VERSION}.tar.xz
   tar xzf gettext-${GETTEXT_VERSION}.tar.xz
   cd gettext-${GETTEXT_VERSION}/
@@ -286,6 +288,7 @@ fi
 PCRE_VERSION_INSTALLED=$(pcre-config --version | head -n 1 | awk '{ print $NF }')
 if [ "${PCRE_VERSION_INSTALLED}" != "${PCRE_VERSION}" ]
 then
+  cd $BUILD_DIR
   curl -vOL ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${PCRE_VERSION}.tar.gz
   tar xzf pcre-${PCRE_VERSION}.tar.gz
   cd pcre-${PCRE_VERSION}/
@@ -308,6 +311,7 @@ fi
 GLIB_VERSION_INSTALLED=${GLIB_VERSION} # @TODO FIX-ME
 if [ "${GLIB_VERSION}" != "${GLIB_VERSION}" ]
 then
+  cd $BUILD_DIR
   curl -vOL http://ftp.gnome.org/pub/GNOME/sources/glib/${GLIB_VERSION_MAJOR}/glib-${GLIB_VERSION}.tar.xz
   tar xzf glib-2.49.1.tar.xz
   cd glib-2.49.1/
@@ -328,6 +332,7 @@ fi
 NEOVIM_VERSION_INSTALLED=$(nvim --version | head -n 1 | awk '{ print $NF }')
 if [ "${NEOVIM_VERSION_INSTALLED}" != "${NEOVIM_VERSION}" ]
 then
+  cd $BUILD_DIR
   curl -vOL https://github.com/neovim/neovim/archive/v${NEOVIM_VERSION}.tar.gz
   tar xzf v${NEOVIM_VERSION}.tar.gz
   cd neovim-${NEOVIM_VERSION}
@@ -347,6 +352,7 @@ fi
 FZF_VERSION_INSTALLED=$(fzf --version)
 if [ "${FZF_VERSION_INSTALLED}" != "${FZF_VERSION}" ]
 then
+  cd $BUILD_DIR
   curl -vOL https://github.com/junegunn/fzf/archive/${FZF_VERSION}.tar.gz
   tar xzf ${FZF_VERSION}.tar.gz
   cd fzf-${FZF_VERSION}
@@ -371,6 +377,7 @@ fi
 PASTEBOARD_VERSION_INSTALLED=$(reattach-to-user-namespace --version | head -n 1 | awk '{ print $NF }')
 if [ "${PASTEBOARD_VERSION_INSTALLED}" != ${PASTEBOARD_VERSION} ]
 then
+  cd $BUILD_DIR
   curl -vOL "https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/archive/v${PASTEBOARD_VERSION}.tar.gz"
   tar xzf "v${PASTEBOARD_VERSION}.tar.gz"
   cd "tmux-MacOSX-pasteboard-${PASTEBOARD_VERSION}"
