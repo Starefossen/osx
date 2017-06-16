@@ -330,7 +330,7 @@ fi
 ## https://github.com/neovim/neovim/wiki/Building-Neovim#optimized-builds
 
 NEOVIM_VERSION_INSTALLED=$(nvim --version | head -n 1 | awk '{ print $NF }')
-if [ "${NEOVIM_VERSION_INSTALLED}" != "${NEOVIM_VERSION}" ]
+if [ "${NEOVIM_VERSION_INSTALLED}" != "v${NEOVIM_VERSION}" ]
 then
   cd $BUILD_DIR
   curl -vOL https://github.com/neovim/neovim/archive/v${NEOVIM_VERSION}.tar.gz
