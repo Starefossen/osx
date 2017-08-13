@@ -45,12 +45,11 @@ then
   ./configure --prefix=${BUILD_PREFIX} --with-internal-glib \
     && make \
     && sudo make install \
-    || exit 1
+    || exit 1
 
   pkg-config --version
 else
   echo "pkg-config@${PKG_CONFIG_VERSION} is already installed!"
-
 fi
 
 ##
@@ -68,12 +67,11 @@ then
   ./configure --prefix=${BUILD_PREFIX} \
     && make \
     && sudo make install \
-    || exit 1
+    || exit 1
 
   autoconf --version
 else
   echo "autoconf@${AUTOCONF_VERSION} is already installed!"
-
 fi
 
 ##
@@ -91,12 +89,11 @@ then
   ./configure --prefix=${BUILD_PREFIX} \
     && make \
     && sudo make install \
-    || exit 1
+    || exit 1
 
   automake --version
 else
   echo "automake@${AUTOMAKE_VERSION} is already installed!"
-
 fi
 
 ###
@@ -114,7 +111,7 @@ then
   ./configure --prefix=${BUILD_PREFIX} \
     && make \
     && sudo make install \
-    || exit 1
+    || exit 1
 
   sudo ln -s /usr/local/bin/libtool /usr/local/bin/glibtool # because shit
   sudo ln -s /usr/local/bin/libtoolize /usr/local/bin/glibtoolize # ¯\_(ツ)_/¯
@@ -122,7 +119,6 @@ then
   libtool --version
 else
   echo "libtool@${LIBTOOL_VERSION} is already installed!"
-
 fi
 
 ###
@@ -148,12 +144,11 @@ then
     --prefix=${BUILD_PREFIX} \
   && make depend \
   && sudo make install \
-  || exit 1
+  || exit 1
 
   openssl version
 else
   echo "openssl@${OPENSSL_VERSION} is already installed!"
-
 fi
 
 ###
@@ -175,7 +170,6 @@ then
     || exit 1
 else
   echo "libevent@${LIBEVENT_VERSION} is already installed!"
-
 fi
 
 ###
@@ -193,7 +187,6 @@ then
   sudo mv share/cmake-${CMAKE_VERSION_MAJOR} /usr/local/share/
 else
   echo "cmake@${CMAKE_VERSION} is already installed!"
-
 fi
 
 ###
@@ -214,7 +207,6 @@ then
     || exit 1
 else
   echo "tmux@${TMUX_VERSION} is already installed!"
-
 fi
 
 ###
@@ -235,7 +227,6 @@ then
     || exit 1
 else
   echo "tmux-mem-cpu-load@${TMUX_MCL_VERSION} is already installed!"
-
 fi
 
 ###
@@ -255,7 +246,6 @@ then
     || exit 1
 else
   echo "libffi@${LIBFFI_VERSION} is already installed!"
-
 fi
 
 ###
@@ -278,7 +268,6 @@ then
   gettext --version
 else
   echo "gettext@${GETTEXT_VERSION} is already installed!"
-
 fi
 
 ###
@@ -301,7 +290,6 @@ then
   pcre-config --version
 else
   echo "pcre-config@${PCRE_VERSION} is already installed!"
-
 fi
 
 ###
@@ -322,7 +310,6 @@ then
     || exit 1
 else
   echo "glib@${GLIB_VERSION} is already installed!"
-
 fi
 
 ###
@@ -342,7 +329,6 @@ then
     || exit 1
 else
   echo "neovim@${NEOVIM_VERSION} is already installed!"
-
 fi
 
 ###
@@ -366,7 +352,6 @@ then
   sudo mv bin/fzf-tmux /usr/local/bin
 else
   echo "fzf@${FZF_VERSION} is already installed!"
-
 fi
 
 
