@@ -297,7 +297,7 @@ fi
 ## http://ftp.gnome.org/pub/GNOME/sources/glib/
 
 GLIB_VERSION_INSTALLED=${GLIB_VERSION} # @TODO FIX-ME
-if [ "${GLIB_VERSION}" != "${GLIB_VERSION}" ]
+if [ "${GLIB_VERSION_INSTALLED}" != "${GLIB_VERSION}" ]
 then
   cd $BUILD_DIR
   curl -vOL http://ftp.gnome.org/pub/GNOME/sources/glib/${GLIB_VERSION_MAJOR}/glib-${GLIB_VERSION}.tar.xz
