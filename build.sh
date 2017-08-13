@@ -19,6 +19,7 @@ FZF_VERSION=0.16.8
 GETTEXT_VERSION=0.19.8.1
 GLIB_VERSION=2.49.1
 GLIB_VERSION_MAJOR=2.49
+LIBDVDCSS_VERSION=1.4.0
 LIBEVENT_VERSION=2.0.22-stable
 LIBFFI_VERSION=3.2.1
 LIBTOOL_VERSION=2.4.6
@@ -371,5 +372,25 @@ then
   sudo cp reattach-to-user-namespace /usr/local/bin
 else
   echo "pasteboard@${PASTEBOARD_VERSION} is already installed!"
+fi
 
+##
+# libdvdcss
+# https://github.com/xbmc/libdvdcss
+
+LIBDVDCSS_VERSION_INSTALLED=${LIBDVDCSS_VERSION} # @TODO FIX-ME
+if [ "${LIBDVDCSS_VERSION_INSTALLED}" != "${LIBDVDCSS_VERSION}" ]
+then
+  cd $BUILD_DIR
+  curl -VOL "https://code.videolan.org/videolan/libdvdcss/repository/archive.tar.gz?ref=${LIBDVDCSS_VERSION}"
+  tar xzf "archive.tar.gz?ref=${LIBDVDCSS_VERSION}"
+  cd "libdvdcss-${LIBDVDCSS_VERSION}*"
+
+  autoreconf -i \
+    && ./configure --prefix=${BUILD_PREFIX} \
+    && make \
+    && sudo make install \
+    || exit 1
+else
+  echo "autoconf@${AUTOCONF_VERSION} is already installed!"
 fi
