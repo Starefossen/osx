@@ -15,7 +15,7 @@ AUTOCONF_VERSION=2.69
 AUTOMAKE_VERSION=1.15
 CMAKE_VERSION=3.6.1
 CMAKE_VERSION_MAJOR=3.6
-FZF_VERSION=0.16.8
+FZF_VERSION=0.17.0
 GETTEXT_VERSION=0.19.8.1
 GLIB_VERSION=2.49.1
 GLIB_VERSION_MAJOR=2.49
@@ -334,9 +334,9 @@ fi
 
 ###
 ## fzf
-## https://github.com/junegunn/fzf
+## https://github.com/junegunn/fzf/releases
 
-FZF_VERSION_INSTALLED=$(fzf --version)
+FZF_VERSION_INSTALLED=$(fzf --version | head -n 1 | awk '{ print $1 }')
 if [ "${FZF_VERSION_INSTALLED}" != "${FZF_VERSION}" ]
 then
   cd $BUILD_DIR
