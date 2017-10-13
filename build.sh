@@ -125,7 +125,7 @@ fi
 
 ###
 ## OpenSSL
-## https://wiki.openssl.org/index.php/Compilation_and_Installation#Mac
+## https://wiki.openssl.org/index.php/Compilation_and_Installation#OS_X
 
 OPENSSL_VERSION_INSTALLED=$(openssl version | head -n 1 | awk '{ print $2 }')
 if [ "${OPENSSL_VERSION_INSTALLED}" != "${OPENSSL_VERSION}" ]
@@ -381,7 +381,7 @@ fi
 
 ###
 ## pastboard
-## https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
+## https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/releases
 
 PASTEBOARD_VERSION_INSTALLED=$(reattach-to-user-namespace --version | head -n 1 | awk '{ print $NF }')
 if [ "${PASTEBOARD_VERSION_INSTALLED}" != ${PASTEBOARD_VERSION} ]
