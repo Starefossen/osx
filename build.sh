@@ -133,7 +133,7 @@ then
   cd $BUILD_DIR
   curl -vOL https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz
   tar xzf openssl-${OPENSSL_VERSION}.tar.gz
-  cb openssl-${OPENSSL_VERSION}
+  cd openssl-${OPENSSL_VERSION}
 
   ./Configure \
     darwin64-x86_64-cc \
