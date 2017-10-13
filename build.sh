@@ -15,6 +15,7 @@ AUTOCONF_VERSION=2.69
 AUTOMAKE_VERSION=1.15
 CMAKE_VERSION=3.6.1
 CMAKE_VERSION_MAJOR=3.6
+FISH_VERSION=2.6.0
 FZF_VERSION=0.17.0
 GETTEXT_VERSION=0.19.8.1
 GLIB_VERSION=2.49.1
@@ -228,6 +229,28 @@ then
     || exit 1
 else
   echo "tmux-mem-cpu-load@${TMUX_MCL_VERSION} is already installed!"
+fi
+
+###
+## Fish Shell
+## https://github.com/fish-shell/fish-shell/releases
+## https://github.com/fish-shell/fish-shell#building-from-source-1
+
+FISH_VERSION_INSTALLED=$(fish --version | head -n 1 | awk '{ print $3 }')
+if [ "${FISH_VERSION_INSTALLED}" != "${FISH_VERSION}" ]
+then
+  cd $BUILD_DIR
+  curl -vOL https://github.com/fish-shell/fish-shell/releases/download/${FISH_VERSION}/fish-${FISH_VERSION}.tar.gz
+  tar xzf fish-${FISH_VERSION}.tar.gz
+  cd fish-${FISH_VERSION}
+
+  autoreconf --no-recursive \
+    && ./configure --prefix=${BUILD_PREFIX} \
+    && make \
+    && sudo make install \
+    || exit 1
+else
+  echo "fish@${FISH_VERSION} is already installed!"
 fi
 
 ###
