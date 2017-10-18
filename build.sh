@@ -16,7 +16,7 @@ AUTOMAKE_VERSION=1.15
 CMAKE_VERSION=3.6.1
 CMAKE_VERSION_MAJOR=3.6
 FISH_VERSION=2.6.0
-FZF_VERSION=0.17.0
+FZF_VERSION=0.17.1
 GETTEXT_VERSION=0.19.8.1
 GLIB_VERSION=2.49.1
 GLIB_VERSION_MAJOR=2.49
@@ -372,7 +372,7 @@ then
 
   mv shell/key-bindings.fish ~/.config/fish/functions/fzf_key_bindings.fish
 
-  sudo mv bin/fzf-${FZF_VERSION}-darwin_amd64 /usr/local/bin/fzf
+  sudo mv bin/fzf /usr/local/bin/fzf
   sudo mv bin/fzf-tmux /usr/local/bin
 else
   echo "fzf@${FZF_VERSION} is already installed!"
