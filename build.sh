@@ -321,14 +321,15 @@ fi
 
 GLIB_VERSION=2.55.0
 GLIB_VERSION_INSTALLED=${GLIB_VERSION} # @TODO FIX-ME
-if [ "${GLIB_VERSION_INSTALLED}" != "${GLIB_VERSION}" ]
+if [ "${GLIB_VERSION_INSTALLED}" == "${GLIB_VERSION}" ]
 then
   cd $BUILD_DIR
-  curl -vOL http://ftp.gnome.org/pub/GNOME/sources/glib/${GLIB_VERSION_MAJOR}/glib-${GLIB_VERSION}.tar.xz
-  tar xzf glib-2.49.1.tar.xz
-  cd glib-2.49.1/
+  curl -vOL https://github.com/GNOME/glib/archive/${GLIB_VERSION}.tar.gz
+  tar xzf ${GLIB_VERSION}.tar.gz
+  cd glib-${GLIB_VERSION}/
 
-  ./configure --prefix=/usr/local \
+  ./autogen.sh \
+    && ./configure --prefix=/usr/local \
     && make \
     && sudo make install \
     || exit 1
