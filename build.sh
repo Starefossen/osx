@@ -110,6 +110,7 @@ fi
 
 ###
 ## OpenSSL
+## https://www.openssl.org/source/
 ## https://wiki.openssl.org/index.php/Compilation_and_Installation#OS_X
 
 OPENSSL_VERSION=1.0.2n
@@ -247,7 +248,7 @@ fi
 
 ###
 ## libffi
-## http://linuxfromscratch.org/blfs/view/svn/general/libffi.html
+## https://github.com/libffi/libffi/releases
 
 LIBFFI_VERSION=3.2.1
 if [[ ! -d "/usr/local/lib/libffi-${LIBFFI_VERSION}" ]]
@@ -268,6 +269,7 @@ fi
 ###
 ## gettext
 ## http://www.gnu.org/software/gettext/gettext.html
+## http://ftp.gnu.org/pub/gnu/gettext/
 
 GETTEXT_VERSION=0.19.8.1
 GETTEXT_VERSION_INSTALLED=$(gettext --version | head -n 1 | awk '{ print $NF }')
@@ -291,6 +293,7 @@ fi
 ###
 ## pcre
 ## http://pcre.org/
+## https://ftp.pcre.org/pub/pcre/
 
 PCRE_VERSION=8.41
 PCRE_VERSION_INSTALLED=$(pcre-config --version | head -n 1 | awk '{ print $NF }')
@@ -313,7 +316,7 @@ fi
 
 ###
 ## glib
-## http://ftp.gnome.org/pub/GNOME/sources/glib/
+## https://github.com/GNOME/glib/releases
 
 GLIB_VERSION=2.55.0
 GLIB_VERSION_INSTALLED=${GLIB_VERSION} # @TODO FIX-ME
@@ -334,6 +337,7 @@ fi
 
 ###
 ## neovim
+## https://github.com/neovim/neovim/releases
 ## https://github.com/neovim/neovim/wiki/Building-Neovim#optimized-builds
 
 NEOVIM_VERSION=0.2.2
@@ -398,7 +402,7 @@ fi
 
 ##
 # libdvdcss
-# https://github.com/xbmc/libdvdcss
+# https://github.com/xbmc/libdvdcss/releases
 
 LIBDVDCSS_VERSION=1.4.0
 LIBDVDCSS_VERSION_INSTALLED=${LIBDVDCSS_VERSION} # @TODO FIX-ME
