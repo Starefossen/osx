@@ -254,11 +254,12 @@ LIBFFI_VERSION=3.2.1
 if [[ ! -d "/usr/local/lib/libffi-${LIBFFI_VERSION}" ]]
 then
   cd $BUILD_DIR
-  curl -vOL ftp://sourceware.org/pub/libffi/libffi-${LIBFFI_VERSION}.tar.gz
-  tar xzf libffi-${LIBFFI_VERSION}.tar.gz
+  curl -vOL https://github.com/libffi/libffi/archive/v${LIBFFI_VERSION}.tar.gz
+  tar xzf v${LIBFFI_VERSION}.tar.gz
   cd libffi-${LIBFFI_VERSION}/
 
-  ./configure --prefix=/usr/local --disable-static \
+  ./autogen.sh \
+    && ./configure --prefix=/usr/local --disable-static \
     && make \
     && sudo make install \
     || exit 1
