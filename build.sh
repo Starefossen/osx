@@ -173,7 +173,7 @@ if [ "${CMAKE_VERSION_INSTALLED}" != "${CMAKE_VERSION}" ]
 then
   cd ${BUILD_DIR}
   curl -vOL https://cmake.org/files/v${CMAKE_VERSION_MAJOR}/cmake-${CMAKE_VERSION}-Darwin-x86_64.tar.gz
-  tar xzf cmake-${CMAKE_VERSION}-Darwin-x86_64
+  tar xzf cmake-${CMAKE_VERSION}-Darwin-x86_64.tar.gz
   cd cmake-${CMAKE_VERSION}-Darwin-x86_64/CMake.app/Contents
   sudo mv bin/cmake /usr/local/bin/
   sudo mv share/cmake-${CMAKE_VERSION_MAJOR} /usr/local/share/
