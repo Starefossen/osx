@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+set -u
 
 ##
 # Install autoconf, automake and libtool smoothly on Mac OS X.
