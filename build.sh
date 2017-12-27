@@ -11,31 +11,11 @@
 BUILD_DIR=`pwd`
 BUILD_PREFIX=/usr/local
 
-AUTOCONF_VERSION=2.69
-AUTOMAKE_VERSION=1.15
-CMAKE_VERSION=3.6.1
-CMAKE_VERSION_MAJOR=3.6
-FISH_VERSION=2.6.0
-FZF_VERSION=0.17.1
-GETTEXT_VERSION=0.19.8.1
-GLIB_VERSION=2.49.1
-GLIB_VERSION_MAJOR=2.49
-LIBDVDCSS_VERSION=1.4.0
-LIBEVENT_VERSION=2.0.22-stable
-LIBFFI_VERSION=3.2.1
-LIBTOOL_VERSION=2.4.6
-NEOVIM_VERSION=0.2.0
-OPENSSL_VERSION=1.0.2l
-PASTEBOARD_VERSION=2.6
-PCRE_VERSION=8.39
-PKG_CONFIG_VERSION=0.29.1
-TMUX_MCL_VERSION=3.4.0
-TMUX_VERSION=2.6
-
 ##
 # pkg-config
 # https://www.freedesktop.org/wiki/Software/pkg-config/
 
+PKG_CONFIG_VERSION=0.29.2
 PKG_CONFIG_INSTALLED=$(pkg-config --version)
 if [ "${PKG_CONFIG_INSTALLED}" != "${PKG_CONFIG_VERSION}" ]
 then
@@ -58,6 +38,7 @@ fi
 # Autoconf
 # http://ftpmirror.gnu.org/autoconf
 
+AUTOCONF_VERSION=2.69
 AUTOCONF_VERSION_INSTALLED=$(autoconf --version | head -n 1 | awk '{ print $NF }')
 if [ "${AUTOCONF_VERSION_INSTALLED}" != "${AUTOCONF_VERSION}" ]
 then
@@ -80,6 +61,7 @@ fi
 # Automake
 # http://ftpmirror.gnu.org/automake
 
+AUTOMAKE_VERSION=1.15.1
 AUTOMAKE_VERSION_INSTALLED=$(automake --version | head -n 1 | awk '{ print $NF }')
 if [ "${AUTOMAKE_VERSION_INSTALLED}" != "${AUTOMAKE_VERSION}" ]
 then
@@ -102,6 +84,7 @@ fi
 ## Libtool
 ## http://ftpmirror.gnu.org/libtool
 
+LIBTOOL_VERSION=2.4.6
 LIBTOOL_VERSION_INSTALLED=$(libtool --version | head -n 1 | awk '{ print $NF }')
 if [ "${LIBTOOL_VERSION_INSTALLED}" != "${LIBTOOL_VERSION}" ]
 then
@@ -127,6 +110,7 @@ fi
 ## OpenSSL
 ## https://wiki.openssl.org/index.php/Compilation_and_Installation#OS_X
 
+OPENSSL_VERSION=1.0.2n
 OPENSSL_VERSION_INSTALLED=$(openssl version | head -n 1 | awk '{ print $2 }')
 if [ "${OPENSSL_VERSION_INSTALLED}" != "${OPENSSL_VERSION}" ]
 then
@@ -157,6 +141,7 @@ fi
 ## Libvent
 ## https://github.com/libevent/libevent/releases
 
+LIBEVENT_VERSION=2.1.8-stable
 LIBEVENT_VERSION_INSTALLED=${LIBEVENT_VERSION} # @TODO FIX ME
 if [ "${LIBEVENT_VERSION}" != "${LIBEVENT_VERSION}" ]
 then
@@ -178,6 +163,8 @@ fi
 ## CMake
 ## https://cmake.org/download
 
+CMAKE_VERSION=3.10.1
+CMAKE_VERSION_MAJOR=3.10
 CMAKE_VERSION_INSTALLED=$(cmake --version | head -n 1 | awk '{ print $3 }')
 if [ "${CMAKE_VERSION_INSTALLED}" != "${CMAKE_VERSION}" ]
 then
@@ -195,6 +182,7 @@ fi
 ## Tmux
 ## https://github.com/tmux/tmux/releases
 
+TMUX_VERSION=2.6
 TMUX_VERSION_INSTALLED=$(tmux -V | head -n 1 | awk '{ print $2 }')
 if [ "${TMUX_VERSION_INSTALLED}" != "${TMUX_VERSION}" ]
 then
@@ -215,6 +203,7 @@ fi
 ## tmux-mem-cpu-load
 ## https://github.com/thewtex/tmux-mem-cpu-load/releases
 
+TMUX_MCL_VERSION=3.4.0
 TMUX_MCL_VERSION_INSTALLED=$(tmux-mem-cpu-load --help | head -n 1 | awk '{ print $2 }')
 if [ "${TMUX_MCL_VERSION_INSTALLED}" != "v${TMUX_MCL_VERSION}" ]
 then
@@ -236,6 +225,7 @@ fi
 ## https://github.com/fish-shell/fish-shell/releases
 ## https://github.com/fish-shell/fish-shell#building-from-source-1
 
+FISH_VERSION=2.7.1
 FISH_VERSION_INSTALLED=$(fish --version | head -n 1 | awk '{ print $3 }')
 if [ "${FISH_VERSION_INSTALLED}" != "${FISH_VERSION}" ]
 then
@@ -257,6 +247,7 @@ fi
 ## libffi
 ## http://linuxfromscratch.org/blfs/view/svn/general/libffi.html
 
+LIBFFI_VERSION=3.2.1
 if [[ ! -d "/usr/local/lib/libffi-${LIBFFI_VERSION}" ]]
 then
   cd $BUILD_DIR
@@ -276,6 +267,7 @@ fi
 ## gettext
 ## http://www.gnu.org/software/gettext/gettext.html
 
+GETTEXT_VERSION=0.19.8.1
 GETTEXT_VERSION_INSTALLED=$(gettext --version | head -n 1 | awk '{ print $NF }')
 if [ "${GETTEXT_VERSION_INSTALLED}" != "${GETTEXT_VERSION}" ]
 then
@@ -298,6 +290,7 @@ fi
 ## pcre
 ## http://pcre.org/
 
+PCRE_VERSION=8.41
 PCRE_VERSION_INSTALLED=$(pcre-config --version | head -n 1 | awk '{ print $NF }')
 if [ "${PCRE_VERSION_INSTALLED}" != "${PCRE_VERSION}" ]
 then
@@ -320,6 +313,7 @@ fi
 ## glib
 ## http://ftp.gnome.org/pub/GNOME/sources/glib/
 
+GLIB_VERSION=2.55.0
 GLIB_VERSION_INSTALLED=${GLIB_VERSION} # @TODO FIX-ME
 if [ "${GLIB_VERSION_INSTALLED}" != "${GLIB_VERSION}" ]
 then
@@ -340,6 +334,7 @@ fi
 ## neovim
 ## https://github.com/neovim/neovim/wiki/Building-Neovim#optimized-builds
 
+NEOVIM_VERSION=0.2.2
 NEOVIM_VERSION_INSTALLED=$(nvim --version | head -n 1 | awk '{ print $NF }')
 if [ "${NEOVIM_VERSION_INSTALLED}" != "v${NEOVIM_VERSION}" ]
 then
@@ -359,6 +354,7 @@ fi
 ## fzf
 ## https://github.com/junegunn/fzf/releases
 
+FZF_VERSION=0.17.3
 FZF_VERSION_INSTALLED=$(fzf --version | head -n 1 | awk '{ print $1 }')
 if [ "${FZF_VERSION_INSTALLED}" != "${FZF_VERSION}" ]
 then
@@ -383,6 +379,7 @@ fi
 ## pastboard
 ## https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/releases
 
+PASTEBOARD_VERSION=2.6
 PASTEBOARD_VERSION_INSTALLED=$(reattach-to-user-namespace --version | head -n 1 | awk '{ print $NF }')
 if [ "${PASTEBOARD_VERSION_INSTALLED}" != ${PASTEBOARD_VERSION} ]
 then
@@ -401,6 +398,7 @@ fi
 # libdvdcss
 # https://github.com/xbmc/libdvdcss
 
+LIBDVDCSS_VERSION=1.4.0
 LIBDVDCSS_VERSION_INSTALLED=${LIBDVDCSS_VERSION} # @TODO FIX-ME
 if [ "${LIBDVDCSS_VERSION_INSTALLED}" != "${LIBDVDCSS_VERSION}" ]
 then
