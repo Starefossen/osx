@@ -185,7 +185,7 @@ fi
 ## Tmux
 ## https://github.com/tmux/tmux/releases
 
-TMUX_VERSION=2.6
+TMUX_VERSION=2.7
 TMUX_VERSION_INSTALLED=$(tmux -V | head -n 1 | awk '{ print $2 }')
 if [ "${TMUX_VERSION_INSTALLED}" != "${TMUX_VERSION}" ]
 then
