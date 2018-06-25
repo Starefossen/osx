@@ -321,7 +321,7 @@ fi
 
 GLIB_VERSION=2.55.0
 GLIB_VERSION_INSTALLED=${GLIB_VERSION} # @TODO FIX-ME
-if [ "${GLIB_VERSION_INSTALLED}" == "${GLIB_VERSION}" ]
+if [ "${GLIB_VERSION_INSTALLED}" != "${GLIB_VERSION}" ]
 then
   cd $BUILD_DIR
   curl -vOL https://github.com/GNOME/glib/archive/${GLIB_VERSION}.tar.gz
