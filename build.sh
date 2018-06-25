@@ -166,8 +166,8 @@ fi
 ## CMake
 ## https://cmake.org/download
 
-CMAKE_VERSION=3.10.1
-CMAKE_VERSION_MAJOR=3.10
+CMAKE_VERSION=3.11.4
+CMAKE_VERSION_MAJOR=3.11
 CMAKE_VERSION_INSTALLED=$(cmake --version | head -n 1 | awk '{ print $3 }')
 if [ "${CMAKE_VERSION_INSTALLED}" != "${CMAKE_VERSION}" ]
 then
