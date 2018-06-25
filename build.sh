@@ -113,7 +113,7 @@ fi
 ## https://www.openssl.org/source/
 ## https://wiki.openssl.org/index.php/Compilation_and_Installation#OS_X
 
-OPENSSL_VERSION=1.0.2n
+OPENSSL_VERSION=1.0.2o
 OPENSSL_VERSION_INSTALLED=$(openssl version | head -n 1 | awk '{ print $2 }')
 if [ "${OPENSSL_VERSION_INSTALLED}" != "${OPENSSL_VERSION}" ]
 then
