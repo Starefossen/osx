@@ -296,7 +296,7 @@ fi
 ## http://pcre.org/
 ## https://ftp.pcre.org/pub/pcre/
 
-PCRE_VERSION=8.41
+PCRE_VERSION=8.42
 PCRE_VERSION_INSTALLED=$(pcre-config --version | head -n 1 | awk '{ print $NF }')
 if [ "${PCRE_VERSION_INSTALLED}" != "${PCRE_VERSION}" ]
 then
