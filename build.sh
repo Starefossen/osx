@@ -423,3 +423,25 @@ then
 else
   echo "autoconf@${AUTOCONF_VERSION} is already installed!"
 fi
+
+##
+# fswatch
+# https://github.com/emcrisostomo/fswatch/releases
+
+FSWATCH_VERSION=1.11.3
+FSWATCH_VERSION_INSTALLED=$(fswatch --version | head -n 1 | awk '{ print $NF }')
+
+if [ "${FSWATCH_VERSION_INSTALLED}" != "${FSWATCH_VERSION}" ]
+then
+  cd $BUILD_DIR
+  curl -vOL "https://github.com/emcrisostomo/fswatch/releases/download/${FSWATCH_VERSION}/fswatch-${FSWATCH_VERSION}.tar.gz"
+  tar xzf "fswatch-${FSWATCH_VERSION}.tar.gz"
+  cd "fswatch-${FSWATCH_VERSION}"
+
+  ./configure --prefix=${BUILD_PREFIX} \
+    && make \
+    && sudo make install \
+    || exit 1
+else
+  echo "fswatch@${FSWATCH_VERSION} is already installed!"
+fi
