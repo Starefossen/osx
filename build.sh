@@ -362,7 +362,7 @@ fi
 ## fzf
 ## https://github.com/junegunn/fzf/releases
 
-FZF_VERSION=0.17.3
+FZF_VERSION=0.17.4
 FZF_VERSION_INSTALLED=$(fzf --version | head -n 1 | awk '{ print $1 }')
 if [ "${FZF_VERSION_INSTALLED}" != "${FZF_VERSION}" ]
 then
