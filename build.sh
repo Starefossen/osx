@@ -63,7 +63,7 @@ fi
 # Automake
 # http://ftpmirror.gnu.org/automake
 
-AUTOMAKE_VERSION=1.15.1
+AUTOMAKE_VERSION=1.16.1
 AUTOMAKE_VERSION_INSTALLED=$(automake --version | head -n 1 | awk '{ print $NF }')
 if [ "${AUTOMAKE_VERSION_INSTALLED}" != "${AUTOMAKE_VERSION}" ]
 then
