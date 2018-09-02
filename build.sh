@@ -445,3 +445,49 @@ then
 else
   echo "fswatch@${FSWATCH_VERSION} is already installed!"
 fi
+
+##
+# lzip
+# http://download.savannah.gnu.org/releases/lzip/
+
+LZIP_VERSION=1.20
+LZIP_VERSION_INSTALLED=$(lzip --version | head -n 1 | awk '{ print $NF }')
+
+if [ "${LZIP_VERSION_INSTALLED}" != "${LZIP_VERSION}" ]
+then
+  cd $BUILD_DIR
+  curl -vOL "http://download.savannah.gnu.org/releases/lzip/lzip-${LZIP_VERSION}.tar.gz"
+  tar xzf "lzip-${LZIP_VERSION}.tar.gz"
+  cd "lzip-${FSWATCH_VERSION}"
+
+  ./configure --prefix=${BUILD_PREFIX} \
+    && make \
+    && sudo make install \
+    || exit 1
+else
+  echo "lzip@${LZIP_VERSION} is already installed!"
+fi
+
+##
+# ddrescue
+# http://gnuftp.uib.no/ddrescue/
+# https://apple.stackexchange.com/questions/300441/how-to-rescue-a-scratched-cd-dvd-on-mac-osx
+
+DDRESCUE_VERSION=1.23
+DDRESCUE_VERSION_INSTALLED=$(ddrescue --version | head -n 1 | awk '{ print $NF }')
+
+if [ "${DDRESCUE_VERSION_INSTALLED}" != "${DDRESCUE_VERSION}" ]
+then
+  cd $BUILD_DIR
+  curl -vOL "http://gnuftp.uib.no/ddrescue/ddrescue-${DDRESCUE_VERSION}.tar.lz"
+  lzip -d ddrescue-${DDRESCUE_VERSION}.tar.lz
+  tar vxf ddrescue-${DDRESCUE_VERSION}.tar
+  cd "ddrescue-${FSWATCH_VERSION}"
+
+  ./configure --prefix=${BUILD_PREFIX} \
+    && make \
+    && sudo make install \
+    || exit 1
+else
+  echo "ddrescue@${DDRESCUE_VERSION} is already installed!"
+fi
