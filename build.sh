@@ -491,3 +491,25 @@ then
 else
   echo "ddrescue@${DDRESCUE_VERSION} is already installed!"
 fi
+
+##
+# nmap
+# https://nmap.org/download.html
+
+NMAP_VERSION=7.70
+NMAP_VERSION_INSTALLED=$(nmap --version | head -n 1 | awk '{ print $3 }')
+
+if [ "${NMAP_VERSION_INSTALLED}" != "${NMAP_VERSION}" ]
+then
+  cd $BUILD_DIR
+  curl -vOL "https://nmap.org/dist/nmap-${NMAP_VERSION}.tgz"
+  tar vxf nmap-${NMAP_VERSION}.tgz
+  cd "nmap-${NMAP_VERSION}"
+
+  ./configure --prefix=${BUILD_PREFIX} \
+    && make \
+    && sudo make install \
+    || exit 1
+else
+  echo "nmap@${NMAP_VERSION} is already installed!"
+fi
