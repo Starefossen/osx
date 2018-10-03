@@ -482,7 +482,7 @@ then
   curl -vOL "http://gnuftp.uib.no/ddrescue/ddrescue-${DDRESCUE_VERSION}.tar.lz"
   lzip -d ddrescue-${DDRESCUE_VERSION}.tar.lz
   tar vxf ddrescue-${DDRESCUE_VERSION}.tar
-  cd "ddrescue-${FSWATCH_VERSION}"
+  cd "ddrescue-${DDRESCUE_VERSION}"
 
   ./configure --prefix=${BUILD_PREFIX} \
     && make \
