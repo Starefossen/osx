@@ -428,7 +428,7 @@ fi
 # fswatch
 # https://github.com/emcrisostomo/fswatch/releases
 
-FSWATCH_VERSION=1.11.3
+FSWATCH_VERSION=1.14.0
 FSWATCH_VERSION_INSTALLED=$(fswatch --version | head -n 1 | awk '{ print $NF }')
 
 if [ "${FSWATCH_VERSION_INSTALLED}" != "${FSWATCH_VERSION}" ]
