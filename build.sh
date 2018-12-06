@@ -387,7 +387,7 @@ fi
 ## pastboard
 ## https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/releases
 
-PASTEBOARD_VERSION=2.6
+PASTEBOARD_VERSION=2.7
 PASTEBOARD_VERSION_INSTALLED=$(reattach-to-user-namespace --version | head -n 1 | awk '{ print $NF }')
 if [ "${PASTEBOARD_VERSION_INSTALLED}" != ${PASTEBOARD_VERSION} ]
 then
