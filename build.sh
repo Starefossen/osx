@@ -513,3 +513,25 @@ then
 else
   echo "nmap@${NMAP_VERSION} is already installed!"
 fi
+
+##
+# xz
+# https://tukaani.org/xz/
+
+XZ_VERSION=5.2.4
+XZ_VERSION_INSTALLED=$(xz --version | tail -n 1 | awk '{ print $2 }')
+
+if [ "${XZ_VERSION_INSTALLED}" != "${XZ_VERSION}" ]
+then
+  cd $BUILD_DIR
+  curl -vOL "https://tukaani.org/xz/xz-${XZ_VERSION}.tar.gz"
+  tar vxf xz-${XZ_VERSION}.tar.gz
+  cd "xz-${XZ_VERSION}"
+
+  ./configure --prefix=${BUILD_PREFIX} \
+    && make \
+    && sudo make install \
+    || exit 1
+else
+  echo "xz@${XZ_VERSION} is already installed!"
+fi
