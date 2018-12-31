@@ -535,3 +535,25 @@ then
 else
   echo "xz@${XZ_VERSION} is already installed!"
 fi
+
+##
+# ag
+# https://github.com/ggreer/the_silver_searcher
+
+AG_VERSION=2.2.0
+AG_VERSION_INSTALLED=$(ag --version | head -n 1 | awk '{ print $3 }')
+
+if [ "${AG_VERSION_INSTALLED}" != "${AG_VERSION}" ]
+then
+  cd $BUILD_DIR
+  curl -vOL "https://github.com/ggreer/the_silver_searcher/archive/${AG_VERSION}.tar.gz"
+  tar vxf ${AG_VERSION}.tar.gz
+  cd "the_silver_searcher-${AG_VERSION}"
+
+  ./configure --prefix=${BUILD_PREFIX} \
+    && make \
+    && sudo make install \
+    || exit 1
+else
+  echo "ag@${AG_VERSION} is already installed!"
+fi
