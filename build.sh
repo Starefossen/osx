@@ -228,12 +228,16 @@ fi
 ## https://github.com/fish-shell/fish-shell/releases
 ## https://github.com/fish-shell/fish-shell#building-from-source-1
 
-FISH_VERSION=2.7.1
+FISH_VERSION=3.0.0
+FISH_VERSION_HASH=ea9dd3614bb0346829ce7319437c6a93e3e1dfde3b7f6a469b543b0d2c68f2cf
 FISH_VERSION_INSTALLED=$(fish --version | head -n 1 | awk '{ print $3 }')
+
 if [ "${FISH_VERSION_INSTALLED}" != "${FISH_VERSION}" ]
 then
   cd $BUILD_DIR
   curl -vOL https://github.com/fish-shell/fish-shell/releases/download/${FISH_VERSION}/fish-${FISH_VERSION}.tar.gz
+  echo "${FISH_VERSION_HASH}  fish-${FISH_VERSION}.tar.gz" > fish-${FISH_VERSION}.tar.gz.sha
+  shasum --algorithm 256 --check fish-${FISH_VERSION}.tar.gz.sha
   tar xzf fish-${FISH_VERSION}.tar.gz
   cd fish-${FISH_VERSION}
 
