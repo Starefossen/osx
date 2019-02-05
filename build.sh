@@ -346,7 +346,7 @@ fi
 ## https://github.com/neovim/neovim/releases
 ## https://github.com/neovim/neovim/wiki/Building-Neovim#optimized-builds
 
-NEOVIM_VERSION=0.3.1
+NEOVIM_VERSION=0.3.4
 NEOVIM_VERSION_INSTALLED=$(nvim --version | head -n 1 | awk '{ print $NF }')
 if [ "${NEOVIM_VERSION_INSTALLED}" != "v${NEOVIM_VERSION}" ]
 then
