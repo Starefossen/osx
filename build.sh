@@ -228,8 +228,8 @@ fi
 ## https://github.com/fish-shell/fish-shell/releases
 ## https://github.com/fish-shell/fish-shell#building-from-source-1
 
-FISH_VERSION=3.0.0
-FISH_VERSION_HASH=ea9dd3614bb0346829ce7319437c6a93e3e1dfde3b7f6a469b543b0d2c68f2cf
+FISH_VERSION=3.0.2
+FISH_VERSION_HASH=14728ccc6b8e053d01526ebbd0822ca4eb0235e6487e832ec1d0d22f1395430e
 FISH_VERSION_INSTALLED=$(fish --version | head -n 1 | awk '{ print $3 }')
 
 if [ "${FISH_VERSION_INSTALLED}" != "${FISH_VERSION}" ]
