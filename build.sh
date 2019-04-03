@@ -420,9 +420,9 @@ LIBDVDCSS_VERSION_INSTALLED=${LIBDVDCSS_VERSION} # @TODO FIX-ME
 if [ "${LIBDVDCSS_VERSION_INSTALLED}" != "${LIBDVDCSS_VERSION}" ]
 then
   cd $BUILD_DIR
-  curl -VOL "https://code.videolan.org/videolan/libdvdcss/repository/archive.tar.gz?ref=${LIBDVDCSS_VERSION}"
-  tar xzf "archive.tar.gz?ref=${LIBDVDCSS_VERSION}"
-  cd "libdvdcss-${LIBDVDCSS_VERSION}*"
+  curl -vOL "https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz"
+  tar xzf "${LIBDVDCSS_VERSION}.tar.gz"
+  cd "libdvdcss-${LIBDVDCSS_VERSION}"
 
   autoreconf -i \
     && ./configure --prefix=${BUILD_PREFIX} \
