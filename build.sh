@@ -18,7 +18,7 @@ BUILD_PREFIX=/usr/local
 # https://www.freedesktop.org/wiki/Software/pkg-config/
 
 PKG_CONFIG_VERSION=0.29.2
-PKG_CONFIG_INSTALLED=$(pkg-config --version)
+PKG_CONFIG_INSTALLED=$(pkg-config --version || echo "0.0.0")
 if [ "${PKG_CONFIG_INSTALLED}" != "${PKG_CONFIG_VERSION}" ]
 then
   cd $BUILD_DIR
@@ -41,7 +41,7 @@ fi
 # http://ftpmirror.gnu.org/autoconf
 
 AUTOCONF_VERSION=2.69
-AUTOCONF_VERSION_INSTALLED=$(autoconf --version | head -n 1 | awk '{ print $NF }')
+AUTOCONF_VERSION_INSTALLED=$(autoconf --version | head -n 1 | awk '{ print $NF }' || echo "0.0.0")
 if [ "${AUTOCONF_VERSION_INSTALLED}" != "${AUTOCONF_VERSION}" ]
 then
   cd $BUILD_DIR
@@ -64,7 +64,7 @@ fi
 # http://ftpmirror.gnu.org/automake
 
 AUTOMAKE_VERSION=1.16.1
-AUTOMAKE_VERSION_INSTALLED=$(automake --version | head -n 1 | awk '{ print $NF }')
+AUTOMAKE_VERSION_INSTALLED=$(automake --version | head -n 1 | awk '{ print $NF }' || echo "0.0.0")
 if [ "${AUTOMAKE_VERSION_INSTALLED}" != "${AUTOMAKE_VERSION}" ]
 then
   cd $BUILD_DIR
@@ -87,7 +87,7 @@ fi
 ## http://ftpmirror.gnu.org/libtool
 
 LIBTOOL_VERSION=2.4.6
-LIBTOOL_VERSION_INSTALLED=$(libtool --version | head -n 1 | awk '{ print $NF }')
+LIBTOOL_VERSION_INSTALLED=$(libtool --version | head -n 1 | awk '{ print $NF }' || echo "0.0.0")
 if [ "${LIBTOOL_VERSION_INSTALLED}" != "${LIBTOOL_VERSION}" ]
 then
   cd $BUILD_DIR
@@ -114,7 +114,7 @@ fi
 ## https://wiki.openssl.org/index.php/Compilation_and_Installation#OS_X
 
 OPENSSL_VERSION=1.0.2o
-OPENSSL_VERSION_INSTALLED=$(openssl version | head -n 1 | awk '{ print $2 }')
+OPENSSL_VERSION_INSTALLED=$(openssl version | head -n 1 | awk '{ print $2 }' || echo "0.0.0")
 if [ "${OPENSSL_VERSION_INSTALLED}" != "${OPENSSL_VERSION}" ]
 then
   cd $BUILD_DIR
@@ -168,7 +168,7 @@ fi
 
 CMAKE_VERSION=3.11.4
 CMAKE_VERSION_MAJOR=3.11
-CMAKE_VERSION_INSTALLED=$(cmake --version | head -n 1 | awk '{ print $3 }')
+CMAKE_VERSION_INSTALLED=$(cmake --version | head -n 1 | awk '{ print $3 }' || echo "0.0.0")
 if [ "${CMAKE_VERSION_INSTALLED}" != "${CMAKE_VERSION}" ]
 then
   cd ${BUILD_DIR}
@@ -186,7 +186,7 @@ fi
 ## https://github.com/tmux/tmux/releases
 
 TMUX_VERSION=2.8
-TMUX_VERSION_INSTALLED=$(tmux -V | head -n 1 | awk '{ print $2 }')
+TMUX_VERSION_INSTALLED=$(tmux -V | head -n 1 | awk '{ print $2 }' || echo "0.0.0")
 if [ "${TMUX_VERSION_INSTALLED}" != "${TMUX_VERSION}" ]
 then
   cd $BUILD_DIR
@@ -207,7 +207,7 @@ fi
 ## https://github.com/thewtex/tmux-mem-cpu-load/releases
 
 TMUX_MCL_VERSION=3.4.0
-TMUX_MCL_VERSION_INSTALLED=$(tmux-mem-cpu-load --help | head -n 1 | awk '{ print $2 }')
+TMUX_MCL_VERSION_INSTALLED=$(tmux-mem-cpu-load --help | head -n 1 | awk '{ print $2 }' || echo "0.0.0")
 if [ "${TMUX_MCL_VERSION_INSTALLED}" != "v${TMUX_MCL_VERSION}" ]
 then
   cd $BUILD_DIR
@@ -230,7 +230,7 @@ fi
 
 FISH_VERSION=3.0.2
 FISH_VERSION_HASH=14728ccc6b8e053d01526ebbd0822ca4eb0235e6487e832ec1d0d22f1395430e
-FISH_VERSION_INSTALLED=$(fish --version | head -n 1 | awk '{ print $3 }')
+FISH_VERSION_INSTALLED=$(fish --version | head -n 1 | awk '{ print $3 }' || echo "0.0.0")
 
 if [ "${FISH_VERSION_INSTALLED}" != "${FISH_VERSION}" ]
 then
@@ -277,7 +277,7 @@ fi
 ## http://ftp.gnu.org/pub/gnu/gettext/
 
 GETTEXT_VERSION=0.19.8.1
-GETTEXT_VERSION_INSTALLED=$(gettext --version | head -n 1 | awk '{ print $NF }')
+GETTEXT_VERSION_INSTALLED=$(gettext --version | head -n 1 | awk '{ print $NF }' || echo "0.0.0")
 if [ "${GETTEXT_VERSION_INSTALLED}" != "${GETTEXT_VERSION}" ]
 then
   cd $BUILD_DIR
@@ -301,7 +301,7 @@ fi
 ## https://ftp.pcre.org/pub/pcre/
 
 PCRE_VERSION=8.42
-PCRE_VERSION_INSTALLED=$(pcre-config --version | head -n 1 | awk '{ print $NF }')
+PCRE_VERSION_INSTALLED=$(pcre-config --version | head -n 1 | awk '{ print $NF }' || echo "0.0.0")
 if [ "${PCRE_VERSION_INSTALLED}" != "${PCRE_VERSION}" ]
 then
   cd $BUILD_DIR
@@ -347,7 +347,7 @@ fi
 ## https://github.com/neovim/neovim/wiki/Building-Neovim#optimized-builds
 
 NEOVIM_VERSION=0.3.4
-NEOVIM_VERSION_INSTALLED=$(nvim --version | head -n 1 | awk '{ print $NF }')
+NEOVIM_VERSION_INSTALLED=$(nvim --version | head -n 1 | awk '{ print $NF }' || echo "0.0.0")
 if [ "${NEOVIM_VERSION_INSTALLED}" != "v${NEOVIM_VERSION}" ]
 then
   cd $BUILD_DIR
@@ -367,7 +367,7 @@ fi
 ## https://github.com/junegunn/fzf/releases
 
 FZF_VERSION=0.17.5
-FZF_VERSION_INSTALLED=$(fzf --version | head -n 1 | awk '{ print $1 }')
+FZF_VERSION_INSTALLED=$(fzf --version | head -n 1 | awk '{ print $1 }' || echo "0.0.0")
 if [ "${FZF_VERSION_INSTALLED}" != "${FZF_VERSION}" ]
 then
   cd $BUILD_DIR
@@ -392,7 +392,7 @@ fi
 ## https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/releases
 
 PASTEBOARD_VERSION=2.7
-PASTEBOARD_VERSION_INSTALLED=$(reattach-to-user-namespace --version | head -n 1 | awk '{ print $NF }')
+PASTEBOARD_VERSION_INSTALLED=$(reattach-to-user-namespace --version | head -n 1 | awk '{ print $NF }' || echo "0.0.0")
 if [ "${PASTEBOARD_VERSION_INSTALLED}" != ${PASTEBOARD_VERSION} ]
 then
   cd $BUILD_DIR
@@ -433,7 +433,7 @@ fi
 # https://github.com/emcrisostomo/fswatch/releases
 
 FSWATCH_VERSION=1.14.0
-FSWATCH_VERSION_INSTALLED=$(fswatch --version | head -n 1 | awk '{ print $NF }')
+FSWATCH_VERSION_INSTALLED=$(fswatch --version | head -n 1 | awk '{ print $NF }' || echo "0.0.0")
 
 if [ "${FSWATCH_VERSION_INSTALLED}" != "${FSWATCH_VERSION}" ]
 then
@@ -454,8 +454,8 @@ fi
 # lzip
 # http://download.savannah.gnu.org/releases/lzip/
 
-LZIP_VERSION=1.20
-LZIP_VERSION_INSTALLED=$(lzip --version | head -n 1 | awk '{ print $NF }')
+LZIP_VERSION=1.21
+LZIP_VERSION_INSTALLED=$(lzip --version | head -n 1 | awk '{ print $NF }' || echo "0.0.0")
 
 if [ "${LZIP_VERSION_INSTALLED}" != "${LZIP_VERSION}" ]
 then
@@ -478,7 +478,7 @@ fi
 # https://apple.stackexchange.com/questions/300441/how-to-rescue-a-scratched-cd-dvd-on-mac-osx
 
 DDRESCUE_VERSION=1.23
-DDRESCUE_VERSION_INSTALLED=$(ddrescue --version | head -n 1 | awk '{ print $NF }')
+DDRESCUE_VERSION_INSTALLED=$(ddrescue --version | head -n 1 | awk '{ print $NF }' || echo "0.0.0")
 
 if [ "${DDRESCUE_VERSION_INSTALLED}" != "${DDRESCUE_VERSION}" ]
 then
@@ -501,7 +501,7 @@ fi
 # https://nmap.org/download.html
 
 NMAP_VERSION=7.70
-NMAP_VERSION_INSTALLED=$(nmap --version | head -n 1 | awk '{ print $3 }')
+NMAP_VERSION_INSTALLED=$(nmap --version | head -n 1 | awk '{ print $3 }' || echo "0.0.0")
 
 if [ "${NMAP_VERSION_INSTALLED}" != "${NMAP_VERSION}" ]
 then
@@ -523,7 +523,7 @@ fi
 # https://tukaani.org/xz/
 
 XZ_VERSION=5.2.4
-XZ_VERSION_INSTALLED=$(xz --version | tail -n 1 | awk '{ print $2 }')
+XZ_VERSION_INSTALLED=$(xz --version | tail -n 1 | awk '{ print $2 }' || echo "0.0.0")
 
 if [ "${XZ_VERSION_INSTALLED}" != "${XZ_VERSION}" ]
 then
@@ -545,7 +545,7 @@ fi
 # https://github.com/ggreer/the_silver_searcher
 
 AG_VERSION=2.2.0
-AG_VERSION_INSTALLED=$(ag --version | head -n 1 | awk '{ print $3 }')
+AG_VERSION_INSTALLED=$(ag --version | head -n 1 | awk '{ print $3 }' || echo "0.0.0")
 
 if [ "${AG_VERSION_INSTALLED}" != "${AG_VERSION}" ]
 then
