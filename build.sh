@@ -246,6 +246,8 @@ then
     && make \
     && sudo make install \
     || exit 1
+
+  sudo chsh -s /usr/local/bin/fish $USER
 else
   echo "fish@${FISH_VERSION} is already installed!"
 fi
