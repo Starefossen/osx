@@ -559,8 +559,7 @@ then
   tar vxf ${AG_VERSION}.tar.gz
   cd "the_silver_searcher-${AG_VERSION}"
 
-  ./configure --prefix=${BUILD_PREFIX} \
-    && make \
+  ./build.sh \
     && sudo make install \
     || exit 1
 else
