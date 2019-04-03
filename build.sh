@@ -364,6 +364,9 @@ else
   echo "neovim@${NEOVIM_VERSION} is already installed!"
 fi
 
+sudo ln -sf /usr/local/bin/nvim /usr/local/bin/vi
+sudo ln -sf /usr/local/bin/nvim /usr/local/bin/vim
+
 ###
 ## fzf
 ## https://github.com/junegunn/fzf/releases
