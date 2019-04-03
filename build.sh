@@ -465,9 +465,9 @@ LZIP_VERSION_INSTALLED=$(lzip --version | head -n 1 | awk '{ print $NF }' || ec
 if [ "${LZIP_VERSION_INSTALLED}" != "${LZIP_VERSION}" ]
 then
   cd $BUILD_DIR
-  curl -vOL "http://download.savannah.gnu.org/releases/lzip/lzip-${LZIP_VERSION}.tar.gz"
+  curl -vOL "http://download-mirror.savannah.gnu.org/releases/lzip/lzip-${LZIP_VERSION}.tar.gz"
   tar xzf "lzip-${LZIP_VERSION}.tar.gz"
-  cd "lzip-${FSWATCH_VERSION}"
+  cd "lzip-${LZIP_VERSION}"
 
   ./configure --prefix=${BUILD_PREFIX} \
     && make \
