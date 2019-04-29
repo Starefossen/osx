@@ -565,3 +565,20 @@ then
 else
   echo "ag@${AG_VERSION} is already installed!"
 fi
+
+##
+# go-task
+#
+
+GO_TASK_VERSION=2.5.0
+GO_TASK_VERSION_INSTALLED=$(task --version | head -n 1 | awk '{ print $3 }' || echo "0.0.0")
+
+if [ "${GO_TASK_VERSION_INSTALLED}" != "${GO_TASK_VERSION}" ]
+then
+  cd $BUILD_DIR
+  curl -VOL "https://github.com/go-task/task/releases/download/v${GO_TASK_VERSION}/task_darwin_amd64.tar.gz"
+  tar vxf task_darwin_amd64.tar.gz
+  sudo mv task /usr/local/bin/
+else
+  echo "task@${GO_TASK_VERSION} is already installed!"
+fi
