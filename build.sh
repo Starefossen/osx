@@ -608,7 +608,7 @@ fi
 # https://github.com/sharkdp/bat/releases
 #
 
-BAT_VERSION=v0.11.0
+BAT_VERSION=v0.12.1
 BAT_VERSION_INSTALLED="v$(bat --version | awk '{ print $2 }')"
 
 if [ "${BAT_VERSION_INSTALLED}" != "${BAT_VERSION}" ]
