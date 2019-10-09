@@ -571,7 +571,7 @@ fi
 #
 
 GO_TASK_VERSION=2.5.0
-GO_TASK_VERSION_INSTALLED=$(task --version | head -n 1 | awk '{ print $3 }' || echo "0.0.0")
+GO_TASK_VERSION_INSTALLED=$(task --version 2>&1 | head -n 1 | awk '{ print $3 }' || echo "0.0.0")
 
 if [ "${GO_TASK_VERSION_INSTALLED}" != "${GO_TASK_VERSION}" ]
 then
