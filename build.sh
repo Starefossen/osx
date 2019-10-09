@@ -582,3 +582,23 @@ then
 else
   echo "task@${GO_TASK_VERSION} is already installed!"
 fi
+
+##
+# jsonnet
+#
+
+JSONNET_VERSION=0.13.0
+JSONNET_VERSION_INSTALLED=$(jsonnet --version | awk '{ print $4 }')
+
+if [ "${JSONNET_VERSION_INSTALLED}" != "v${JSONNET_VERSION}" ]
+then
+  cd $BUILD_DIR
+  curl -vOL https://github.com/google/jsonnet/archive/v${JSONNET_VERSION}.tar.gz
+  tar vxf v${JSONNET_VERSION}.tar.gz
+  cd jsonnet-${JSONNET_VERSION}/
+  make
+  sudo mv jsonnet /usr/local/bin/
+  sudo mv jsonnetfmt /usr/local/bin/
+else
+  echo "jsonnet@${JSONNET_VERSION} is already installed!"
+fi
