@@ -602,3 +602,24 @@ then
 else
   echo "jsonnet@${JSONNET_VERSION} is already installed!"
 fi
+
+##
+# bat
+# https://github.com/sharkdp/bat/releases
+#
+
+BAT_VERSION=v0.11.0
+BAT_VERSION_INSTALLED="v$(bat --version | awk '{ print $2 }')"
+
+if [ "${BAT_VERSION_INSTALLED}" != "${BAT_VERSION}" ]
+then
+  cd $BUILD_DIR
+  curl -vOL https://github.com/sharkdp/bat/releases/download/${BAT_VERSION}/bat-${BAT_VERSION}-x86_64-apple-darwin.tar.gz
+  tar vxf bat-${BAT_VERSION}-x86_64-apple-darwin.tar.gz
+  cd bat-${BAT_VERSION}-x86_64-apple-darwin/
+  sudo mv bat /usr/local/bin/
+else
+  echo "bat@${BAT_VERSION} is already installed!"
+fi
+
+## https://github.com/vanhauser-thc/thc-hydra/archive/v9.0.tar.gz
