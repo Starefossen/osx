@@ -278,7 +278,7 @@ fi
 ## http://www.gnu.org/software/gettext/gettext.html
 ## http://ftp.gnu.org/pub/gnu/gettext/
 
-GETTEXT_VERSION=0.19.8.1
+GETTEXT_VERSION=0.20.2
 GETTEXT_VERSION_INSTALLED=$(gettext --version | head -n 1 | awk '{ print $NF }' || echo "0.0.0")
 if [ "${GETTEXT_VERSION_INSTALLED}" != "${GETTEXT_VERSION}" ]
 then
