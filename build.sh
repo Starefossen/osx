@@ -166,15 +166,15 @@ fi
 ## CMake
 ## https://cmake.org/download
 
-CMAKE_VERSION=3.11.4
-CMAKE_VERSION_MAJOR=3.11
+CMAKE_VERSION=3.20.5
+CMAKE_VERSION_MAJOR=3.20
 CMAKE_VERSION_INSTALLED=$(cmake --version | head -n 1 | awk '{ print $3 }' || echo "0.0.0")
 if [ "${CMAKE_VERSION_INSTALLED}" != "${CMAKE_VERSION}" ]
 then
   cd ${BUILD_DIR}
-  curl -vOL https://cmake.org/files/v${CMAKE_VERSION_MAJOR}/cmake-${CMAKE_VERSION}-Darwin-x86_64.tar.gz
-  tar xzf cmake-${CMAKE_VERSION}-Darwin-x86_64.tar.gz
-  cd cmake-${CMAKE_VERSION}-Darwin-x86_64/CMake.app/Contents
+  curl -vOL https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-macos-universal.tar.gz
+  tar xzf cmake-${CMAKE_VERSION}-macos-universal.tar.gz
+  cd cmake-${CMAKE_VERSION}-macos-universal/CMake.app/Contents
   sudo mv bin/cmake /usr/local/bin/
   sudo mv share/cmake-${CMAKE_VERSION_MAJOR} /usr/local/share/
 else
